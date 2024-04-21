@@ -1,0 +1,5 @@
+﻿  main.cpp
+  Source.cpp
+D:\cpp\Student_management\Project1\Project1\main.cpp(10,2): error C3861: 'addStudent': identifier not found
+  Student.cpp
+  Generating Code...

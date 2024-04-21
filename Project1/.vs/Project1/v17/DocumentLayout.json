@@ -1,0 +1,102 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\cpp\\Student_management\\Project1\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{185456F5-09D5-4D58-B428-8F4B34A3E78E}|Project1\\Project1.vcxproj|D:\\cpp\\Student_management\\Project1\\Project1\\student_operator.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{185456F5-09D5-4D58-B428-8F4B34A3E78E}|Project1\\Project1.vcxproj|solutionrelative:Project1\\student_operator.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{185456F5-09D5-4D58-B428-8F4B34A3E78E}|Project1\\Project1.vcxproj|D:\\cpp\\Student_management\\Project1\\Project1\\student.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{185456F5-09D5-4D58-B428-8F4B34A3E78E}|Project1\\Project1.vcxproj|solutionrelative:Project1\\student.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{185456F5-09D5-4D58-B428-8F4B34A3E78E}|Project1\\Project1.vcxproj|D:\\cpp\\Student_management\\Project1\\Project1\\Student.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{185456F5-09D5-4D58-B428-8F4B34A3E78E}|Project1\\Project1.vcxproj|solutionrelative:Project1\\Student.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{185456F5-09D5-4D58-B428-8F4B34A3E78E}|Project1\\Project1.vcxproj|D:\\cpp\\Student_management\\Project1\\Project1\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{185456F5-09D5-4D58-B428-8F4B34A3E78E}|Project1\\Project1.vcxproj|solutionrelative:Project1\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{185456F5-09D5-4D58-B428-8F4B34A3E78E}|Project1\\Project1.vcxproj|D:\\cpp\\Student_management\\Project1\\Project1\\student_operator.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{185456F5-09D5-4D58-B428-8F4B34A3E78E}|Project1\\Project1.vcxproj|solutionrelative:Project1\\student_operator.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "main.cpp",
+              "DocumentMoniker": "D:\\cpp\\Student_management\\Project1\\Project1\\main.cpp",
+              "RelativeDocumentMoniker": "Project1\\main.cpp",
+              "ToolTip": "D:\\cpp\\Student_management\\Project1\\Project1\\main.cpp",
+              "RelativeToolTip": "Project1\\main.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABkAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-04-19T03:58:47.801Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "student_operator.cpp",
+              "DocumentMoniker": "D:\\cpp\\Student_management\\Project1\\Project1\\student_operator.cpp",
+              "RelativeDocumentMoniker": "Project1\\student_operator.cpp",
+              "ToolTip": "D:\\cpp\\Student_management\\Project1\\Project1\\student_operator.cpp",
+              "RelativeToolTip": "Project1\\student_operator.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACYAAAAGAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-04-19T10:18:00.214Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "student_operator.h",
+              "DocumentMoniker": "D:\\cpp\\Student_management\\Project1\\Project1\\student_operator.h",
+              "RelativeDocumentMoniker": "Project1\\student_operator.h",
+              "ToolTip": "D:\\cpp\\Student_management\\Project1\\Project1\\student_operator.h",
+              "RelativeToolTip": "Project1\\student_operator.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABcAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-04-19T10:17:06.01Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Student.cpp",
+              "DocumentMoniker": "D:\\cpp\\Student_management\\Project1\\Project1\\Student.cpp",
+              "RelativeDocumentMoniker": "Project1\\Student.cpp",
+              "ToolTip": "D:\\cpp\\Student_management\\Project1\\Project1\\Student.cpp",
+              "RelativeToolTip": "Project1\\Student.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAEQAAAAVAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-04-19T02:44:22.034Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "student.h",
+              "DocumentMoniker": "D:\\cpp\\Student_management\\Project1\\Project1\\student.h",
+              "RelativeDocumentMoniker": "Project1\\student.h",
+              "ToolTip": "D:\\cpp\\Student_management\\Project1\\Project1\\student.h",
+              "RelativeToolTip": "Project1\\student.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAAGAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-04-16T10:49:23.953Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
