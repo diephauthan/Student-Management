@@ -99,6 +99,49 @@ void menu(list <Student>& database)
 
                 break;
             }
+
+            case 4: // Search Student based on ID or Name
+            {
+                do
+                {
+                    cout << "\n-------------------------------------------------------------------------------------------------------" << endl;
+                    cout << "------------------------------------- Search Student ---------------------------------------------" << endl;
+                    cout << "1. Search by name" << endl;
+                    cout << "2. Search by ID" << endl;
+                    cout << "0. Exit" << endl;
+                    cout << "\t\tEnter The Choice: " << endl;
+			        cin >> choice;
+
+                } while (choice < 0 || choice > 2);
+
+                switch (choice)
+                {
+                    case 1:
+                    {
+                        cout << "\nEnter the name of the student to search for: ";
+                        string student_name; 
+                        cin >> student_name;
+                        search_by_name(database);
+
+                        break;
+                    }
+
+                    case 2:
+                    {
+                        cout <<"\nEnter the student ID to search for: ";
+                        int ID_input;
+                        cin >> ID_input;
+                        search_by_ID(database);
+
+                        break;
+                    }
+
+                default:
+                    break;
+                }
+                
+                break;
+            }
 			default:
 				break;
 		}
@@ -121,7 +164,7 @@ void addStudent(list<Student> &database)
 }
 
 /*
-* Function: edit 
+* Function: edit student info
 * Description: This function is used for editing the student information
 * Input:	database	
 * Output:	none
@@ -161,8 +204,13 @@ void edit_student_info(list<Student>& database) {
             }
             case 2: {
                 cout << "Enter the new age: ";
-                short int new_age;
+                int new_age;
                 cin >> new_age;
+                while (new_age < 0 || new_age > 150) {
+                    cout << "Invalid choice! Please try again: " << endl;
+                    cin >> new_age;
+                }
+           
                 it->setAge(new_age);
                 cout << "Student age updated successfully!" << endl;
                 break;
@@ -190,6 +238,10 @@ void edit_student_info(list<Student>& database) {
                 cout << "Enter the new math score: ";
                 float new_math_score;
                 cin >> new_math_score;
+                while (new_math_score < 0 || new_math_score > 10) {
+                    cout << "Invalid choice! Please try again: " << endl;
+                    cin >> new_math_score;
+                }
                 it->setMath(new_math_score);
                 cout << "Math score updated successfully!" << endl;
                 break;
@@ -198,6 +250,10 @@ void edit_student_info(list<Student>& database) {
                 cout << "Enter the new physics score: ";
                 float new_physics_score;
                 cin >> new_physics_score;
+                while (new_physics_score < 0 || new_physics_score > 10) {
+                    cout << "Invalid choice! Please try again: " << endl;
+                    cin >> new_physics_score;
+                }
                 it->setPhysic(new_physics_score);
                 cout << "Physics score updated successfully!" << endl;
                 break;
@@ -206,6 +262,10 @@ void edit_student_info(list<Student>& database) {
                 cout << "Enter the new chemistry score: ";
                 float new_chemical_score;
                 cin >> new_chemical_score;
+                while (new_chemical_score < 0 || new_chemical_score > 10) {
+                    cout << "Invalid choice! Please try again: " << endl;
+                    cin >> new_chemical_score;
+                }
                 it->setChemical(new_chemical_score);
                 cout << "Chemistry score updated successfully!" << endl;
                 break;
@@ -243,4 +303,50 @@ void deletee(list<Student>& database)
     }
 
     cout << "No Student with ID " << ID_input << "found in the database" << endl;
+}
+
+/*
+* Function: search by ID
+* Description: This function is used for search the student by ID
+* Input:	database
+* Output:	none
+*/
+void search_by_ID(list <Student>& database)
+{
+    int ID_input;
+    cout << "Enter the ID of the student: ";
+    cin >> ID_input;
+
+    for (list<Student>::iterator it = database.begin(); it != database.end(); ++it) {
+        if (it->getID() == ID_input) {
+            cout << "\nStudent found. Current information:" << endl;
+            it->getData();
+            return;
+        }
+    }
+
+    cout << "\n\t\t\t No student has this information " << endl; 
+}
+
+/*
+* Function: search by name
+* Description: This function is used for search the student by name
+* Input:	database
+* Output:	none
+*/
+void search_by_name(list <Student>& database)
+{
+    string student_name;
+    cout << "Enter the name of the student: ";
+    cin >> student_name;
+
+    for (list<Student>::iterator it = database.begin(); it != database.end(); ++it) {
+        if(it->getName() == student_name){
+            cout << "\nStudent found. Current information:" << endl;
+            it->getData();
+            return;
+        }
+    }
+
+    cout << "\n\t\t\t No student has this information " << endl; 
 }
