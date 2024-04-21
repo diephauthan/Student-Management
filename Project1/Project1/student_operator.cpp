@@ -4,46 +4,54 @@ void menu(list <Student>& database)
 {
 	int choice = 0;
 	do {
-			cout << "\t\t\t***STUDENT MANAGEMENT SYSTEM***\t\t" << endl;
-			cout << "\t\t\tMAIN MENU" << endl;
-			cout << "\t\t======================" << endl;
-			cout << "\t\t[1] Add A New Student." << endl;
-			cout << "\t\t[2] Modify Student Information." << endl;
-			cout << "\t\t[3] Delete A Student." << endl;
-			cout << "\t\t[4] Search for A Student" << endl;
-			cout << "\t\t[5] Arrange Student." << endl;
-			cout << "\t\t[6] Student List." << endl;
-			cout << "\t\t[7] Save Into database_sv.csv." << endl; 
-			cout << "\t\t[0] Exit the Program." << endl;
-			cout << "\t\t=======================" << endl;
-			cout << "\t\tEnter The Choice: " << endl;
-			cin >> choice;
+        do
+        {
+            system("cls");
+
+            cout << "\t\t\t***STUDENT MANAGEMENT SYSTEM***\t\t" << endl;
+            cout << "\t\t\tMAIN MENU" << endl;
+            cout << "\t\t======================" << endl;
+            cout << "\t\t[1] Add A New Student." << endl;
+            cout << "\t\t[2] Modify Student Information." << endl;
+            cout << "\t\t[3] Delete A Student." << endl;
+            cout << "\t\t[4] Search for A Student" << endl;
+            cout << "\t\t[5] Arrange Student." << endl;
+            cout << "\t\t[6] Student List." << endl;
+            cout << "\t\t[7] Save Into database_sv.csv." << endl;
+            cout << "\t\t[0] Exit the Program." << endl;
+            cout << "\t\t=======================" << endl;
+            cout << "\t\tEnter The Choice: ";
+            cin >> choice;
+
+        } while (choice < 0 || choice > 7);
 
 		switch (choice)
 		{
 			case 1: // Add A New Student.
 			{
 				bool adding_another = true;
-				while (adding_another) {
-					cout << "\n-------------------------------------------------------------------------------------------------------" << endl;
-					cout << "------------------------------------- Add A New Student ---------------------------------------------" << endl;
-					addStudent(database);
+                do
+                {
+                    cout << "\n-------------------------------------------------------------------------------------------------------" << endl;
+                    cout << "------------------------------------- Add A New Student ---------------------------------------------" << endl;
+                    addStudent(database);
 
-					cout << "\n\n\t\t\t 1. Add another student " << endl;
-					cout << "\t\t\t 0. Exit " << endl;
-					cout << "\t\t\tEnter the choice: ";
-					cin >> choice;
+                    cout << "\n\n\t\t\t 1. Add another student " << endl;
+                    cout << "\t\t\t 0. Back to Menu " << endl;
+                    cout << "\t\t\tEnter the choice: ";
+                    cin >> choice;
 
-					if (choice == 1) {
-						adding_another = true;
-					}
-					else if (choice == 0) {
-						adding_another = false;
-					}
-					else {
-						cout << "please try again. " << endl;
-					}
-				}
+                    if (choice == 1) {
+                        adding_another = true;
+                    }
+                    else if (choice == 0) {
+                        adding_another = false;
+                    }
+                    else {
+                        cout << "please try again. " << endl;
+                    }
+                } while (adding_another);
+				
 				break;
 			}
 
@@ -350,3 +358,10 @@ void search_by_name(list <Student>& database)
 
     cout << "\n\t\t\t No student has this information " << endl; 
 }
+
+/*
+* Function: Arrange Students by Name
+* Description: This function is used for arrange students by name
+* Input:	database
+* Output:	none
+*/

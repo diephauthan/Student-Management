@@ -1,4 +1,4 @@
-#include "student.h"
+﻿#include "student.h"
 #include<string>
 /*
 * Class: Student
@@ -158,28 +158,6 @@ double Student::getAverage()
 
 /*
 * Class: Student
-* Function: getRank
-* Description: Return the student Rank based on marks
-* Input: None
-* Output: Rank of the student
-*/
-Rank Student::getRank()
-{
-	if (getAverage() >= 8) {
-		return Excellent;
-	}
-	else if (getAverage() >= 6.5) {
-		return Good;
-	}
-	else if (getAverage() >= 5.0) {
-		return Average;
-	}
-	else
-		return Poor;
-}
-
-/*
-* Class: Student
 * Function: setData
 * Description: This function is used for setting data for student.
 * Input: None
@@ -188,12 +166,26 @@ Rank Student::getRank()
 void Student::setData() {
 	string _name;
 	cout << "\t\t\tEnter Name: ";
-	getline(cin, _name);
+	cin >> _name;
 	setName(_name);
 
-	cout << "\t\t\tEnter Age: ";
 	int _age;
-	cin >> _age;
+	bool validInput = false;
+	do {
+		cout << "\t\t\tEnter Age: ";
+		cin >> _age;
+		if (cin.fail()) {
+			cout << "Invalid input! Please enter a valid integer." << endl;
+			cin.clear();
+			cin.ignore(numeric_limits<streamsize>::max(), '\n');
+		}
+		else if (_age < 0 || _age > 150) {
+			cout << "Invalid choice! Age must be between 0 and 150." << endl;
+		}
+		else {
+			validInput = true;
+		}
+	} while (!validInput);
 	setAge(_age);
 
 	string MF;
@@ -284,8 +276,15 @@ void Student::getData()
 * Output:  return: rank (rank of student)
 */
 Rank Student::getRank() {
-	if (getAverage() >= 8.5 && getAverage() <= 10) return Excellent;
-	else if (getAverage() >= 6.5 && getAverage() <= 8.49) return Good;
-	else if (getAverage() >= 5.0 && getAverage() <= 6.49) return Average;
-	else return Poor;
+	if (getAverage() >= 8.5 && getAverage() <= 10) {
+		return Excellent;
+	}
+	else if (getAverage() >= 6.5 && getAverage() <= 8.49) {
+		return Good;
+	}
+	else if (getAverage() >= 5.0 && getAverage() <= 6.49) {
+		return Average;
+	}
+	else
+		return Poor;
 }

@@ -1,4 +1,4 @@
-/*
+﻿/*
 * File: Student.h
 * Author: Hau Than Diep
 * Date: 4/16/2024
@@ -46,7 +46,8 @@ public:
 		ID++;
 	}
 
-	Student();
+	Student() {}
+
 
 	void setName(string _name);
 	string getName();
