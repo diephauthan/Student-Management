@@ -21,8 +21,10 @@ void edit_student_info(list<Student>& database);
 
 void deletee(list<Student>& database);
 
-void search_by_ID(list <Student>& database);
+void search_by_ID(list <Student> &database);
 
-void search_by_name(list <Student>& database);
+void search_by_name(list <Student> database);
+
+void display_student(list<Student> database);
 
 #endif

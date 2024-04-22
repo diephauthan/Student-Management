@@ -1,8 +1,9 @@
-#include "student_operator.h"
+﻿#include "student_operator.h"
 
 void menu(list <Student>& database)
 {
 	int choice = 0;
+    bool exit_program = false;
 	do {
         do
         {
@@ -32,7 +33,7 @@ void menu(list <Student>& database)
 				bool adding_another = true;
                 do
                 {
-                    cout << "\n-------------------------------------------------------------------------------------------------------" << endl;
+                    cout << "\n-----------------------------------------------------------------------------------------------------" << endl;
                     cout << "------------------------------------- Add A New Student ---------------------------------------------" << endl;
                     addStudent(database);
 
@@ -59,12 +60,12 @@ void menu(list <Student>& database)
 			{
                 bool edit_another = true;
                 while (edit_another) {
-                    cout << "\n-------------------------------------------------------------------------------------------------------" << endl;
+                    cout << "\n-----------------------------------------------------------------------------------------------------" << endl;
                     cout << "------------------------------------- Edit Student Info ---------------------------------------------" << endl;
                     edit_student_info(database);
-                    cout << "\n\n\t\t\t 1. Go back " << endl;
-                    cout << "\t\t\t 0. Exit " << endl;
-                    cout << "\t\t\tEnter the choice: ";
+                    cout << "1. Go back " << endl;
+                    cout << "0. Back to Menu " << endl;
+                    cout << "Enter the choice: ";
 
                     cin >> choice;
 
@@ -87,11 +88,11 @@ void menu(list <Student>& database)
                 bool delete_another = true;
                 while (delete_another) {
                     cout << "\n-------------------------------------------------------------------------------------------------------" << endl;
-                    cout << "------------------------------------- Delete Student ---------------------------------------------" << endl;
+                    cout << "------------------------------------- Delete Student --------------------------------------------------" << endl;
                     deletee(database);
-                    cout << "\n\n\t\t\t 1. Go back " << endl;
-                    cout << "\t\t\t 0. Exit " << endl;
-                    cout << "\t\t\tEnter the choice: ";
+                    cout << "1. Go back " << endl;
+                    cout << "0. Back to Menu " << endl;
+                    cout << "Enter the choice: ";
                     cin >> choice;
 
                     if (choice == 1) {
@@ -110,51 +111,83 @@ void menu(list <Student>& database)
 
             case 4: // Search Student based on ID or Name
             {
-                do
-                {
+                bool continueSearch = false;
+
+                do {
                     cout << "\n-------------------------------------------------------------------------------------------------------" << endl;
                     cout << "------------------------------------- Search Student ---------------------------------------------" << endl;
                     cout << "1. Search by name" << endl;
                     cout << "2. Search by ID" << endl;
-                    cout << "0. Exit" << endl;
-                    cout << "\t\tEnter The Choice: " << endl;
-			        cin >> choice;
+                    cout << "0. Back to Menu" << endl;
+                    cout << "Enter The Choice: ";
+                    cin >> choice;
 
-                } while (choice < 0 || choice > 2);
+                    switch (choice) {
+                        case 1: {
+                                search_by_name(database);
+                                cout << endl;
+                                cout << "1. Search another student" << endl;
+                                cout << "0. Back to Menu" << endl;
+                                cout << "Enter The Choice: ";
+                                cin >> choice;
 
-                switch (choice)
-                {
-                    case 1:
-                    {
-                        cout << "\nEnter the name of the student to search for: ";
-                        string student_name; 
-                        cin >> student_name;
-                        search_by_name(database);
+                                if (choice == 1) {
+                                    continueSearch = true;
+                                }
+                                else {
+                                    continueSearch = false;
+                                }
+                            break;
+                        }
+                        case 2: {
+                            search_by_ID(database);
+                            cout << endl;
+                            cout << "1. Search another student" << endl;
+                            cout << "0. Back to Menu" << endl;
+                            cout << "Enter The Choice: ";
+                            cin >> choice;
 
-                        break;
+                            if (choice == 1) {
+                                continueSearch = true;
+                            }
+                            else {
+                                continueSearch = false;
+                            }
+                            break;
+                        }
+                        case 0: {
+                            break;
+                            continueSearch = false;
+                        }
+                        default: {
+                            cout << "Invalid choice. Please try again." << endl;
+                            continueSearch = true;
+                            break;
+                        }
                     }
+                } while (continueSearch);
 
-                    case 2:
-                    {
-                        cout <<"\nEnter the student ID to search for: ";
-                        int ID_input;
-                        cin >> ID_input;
-                        search_by_ID(database);
-
-                        break;
-                    }
-
-                default:
-                    break;
-                }
-                
                 break;
             }
+
+
+            case 6: // Display student list
+            {
+                cout << "\n-------------------------------------------------------------------------------------------------------" << endl;
+                cout << "------------------------------------- Student List ---------------------------------------------" << endl;
+                display_student(database);
+                cout << endl;
+                cout << "Press [0] to Back to Menu " << endl;
+                cin >> choice;
+
+                break;
+            }
+
 			default:
 				break;
 		}
 	
-	}while (choice != 0);
+	}while (!exit_program);
 }
 
 /*
@@ -208,6 +241,7 @@ void edit_student_info(list<Student>& database) {
                 getline(cin, new_name);
                 it->setName(new_name);
                 cout << "Student name updated successfully!" << endl;
+                cout << endl;
                 break;
             }
             case 2: {
@@ -215,12 +249,13 @@ void edit_student_info(list<Student>& database) {
                 int new_age;
                 cin >> new_age;
                 while (new_age < 0 || new_age > 150) {
-                    cout << "Invalid choice! Please try again: " << endl;
+                    cout << "Invalid choice! Please try again: ";
                     cin >> new_age;
                 }
            
                 it->setAge(new_age);
                 cout << "Student age updated successfully!" << endl;
+                cout << endl;
                 break;
             }
             case 3: {
@@ -240,6 +275,7 @@ void edit_student_info(list<Student>& database) {
                 }
                 it->setGender(_gender);
                 cout << "Student gender updated successfully!" << endl;
+                cout << endl;
                 break;
             }
             case 4: {
@@ -247,11 +283,12 @@ void edit_student_info(list<Student>& database) {
                 float new_math_score;
                 cin >> new_math_score;
                 while (new_math_score < 0 || new_math_score > 10) {
-                    cout << "Invalid choice! Please try again: " << endl;
+                    cout << "Invalid choice! Please try again: ";
                     cin >> new_math_score;
                 }
                 it->setMath(new_math_score);
                 cout << "Math score updated successfully!" << endl;
+                cout << endl;
                 break;
             }
             case 5: {
@@ -259,11 +296,12 @@ void edit_student_info(list<Student>& database) {
                 float new_physics_score;
                 cin >> new_physics_score;
                 while (new_physics_score < 0 || new_physics_score > 10) {
-                    cout << "Invalid choice! Please try again: " << endl;
+                    cout << "Invalid choice! Please try again: ";
                     cin >> new_physics_score;
                 }
                 it->setPhysic(new_physics_score);
                 cout << "Physics score updated successfully!" << endl;
+                cout << endl;
                 break;
             }
             case 6: {
@@ -271,15 +309,16 @@ void edit_student_info(list<Student>& database) {
                 float new_chemical_score;
                 cin >> new_chemical_score;
                 while (new_chemical_score < 0 || new_chemical_score > 10) {
-                    cout << "Invalid choice! Please try again: " << endl;
+                    cout << "Invalid choice! Please try again: ";
                     cin >> new_chemical_score;
                 }
                 it->setChemical(new_chemical_score);
                 cout << "Chemistry score updated successfully!" << endl;
+                cout << endl;
                 break;
             }
             default:
-                cout << "Invalid choice! Please enter a number from 1 to 6." << endl;
+                cout << "Invalid choice! Please enter a number from 1 to 6:" << endl;
             }
             break;
         }
@@ -310,7 +349,7 @@ void deletee(list<Student>& database)
         }
     }
 
-    cout << "No Student with ID " << ID_input << "found in the database" << endl;
+    cout << "No Student with ID " << ID_input << " found in the database" << endl;
 }
 
 /*
@@ -319,21 +358,19 @@ void deletee(list<Student>& database)
 * Input:	database
 * Output:	none
 */
-void search_by_ID(list <Student>& database)
+void search_by_ID(list <Student> &database)
 {
     int ID_input;
     cout << "Enter the ID of the student: ";
     cin >> ID_input;
-
     for (list<Student>::iterator it = database.begin(); it != database.end(); ++it) {
         if (it->getID() == ID_input) {
             cout << "\nStudent found. Current information:" << endl;
             it->getData();
             return;
-        }
+        }  
     }
-
-    cout << "\n\t\t\t No student has this information " << endl; 
+     cout << "No student has this information " << endl;
 }
 
 /*
@@ -342,7 +379,7 @@ void search_by_ID(list <Student>& database)
 * Input:	database
 * Output:	none
 */
-void search_by_name(list <Student>& database)
+void search_by_name(list <Student> database)
 {
     string student_name;
     cout << "Enter the name of the student: ";
@@ -365,3 +402,22 @@ void search_by_name(list <Student>& database)
 * Input:	database
 * Output:	none
 */
+
+
+/*
+* Function: Display list of students
+* Description: This function is used for Display list of students
+* Input:	database
+* Output:	none
+*/
+void display_student(list<Student> database)
+{
+    if (database.empty()) {
+        cout << "The student database is empty." << endl;
+        return;
+    }
+    for (auto x : database) {
+        cout << "\n-------------------------------------------------------------------------------------------------------" << endl;
+        x.getData();
+    }
+}

@@ -39,15 +39,16 @@ private:
 	double chemical_score;
 
 public:
-	Student(string name, int age, Gender gender, double math, double physic, double chemical) :
+	Student(int id, string name, int age, Gender gender, double math, double physic, double chemical) : id(id),
 	name(name), age(age), student_gender(gender), math_score(math), physic_score(physic), chemical_score(chemical) {
+	}
+
+	//Student() {}
+	Student() : id(), name(""), age(0), student_gender(Gender::MALE), math_score(0.0), physic_score(0.0), chemical_score(0.0) {
 		static int ID = 202401;
 		id = ID;
 		ID++;
 	}
-
-	Student() {}
-
 
 	void setName(string _name);
 	string getName();
@@ -77,6 +78,7 @@ public:
 	void setData();
 	void getData();
 };
+
 
 
 #endif
