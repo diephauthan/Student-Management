@@ -10,6 +10,7 @@
 
 #include<iostream>
 #include <string>
+#include <iomanip>
 
 using namespace std;
 
@@ -51,7 +52,7 @@ public:
 	}
 
 	void setName(string _name);
-	string getName();
+	string getName() const;
 
 	void setAge(int _age);
 	int getAge();
@@ -60,23 +61,25 @@ public:
 	Gender getGender();
 
 	void setMath(double _math_score);
-	double getMath();
+	double getMath() const;
 
 
 	void setPhysic(double _physic_score);
-	double getPhysic();
+	double getPhysic() const;
 
 	void setChemical(double _chemical_score);
-	double getChemical();
+	double getChemical() const;
 
 	int getID();
 
-	double getAverage();
+	double getAverage() const;
 
 	Rank getRank();
 
 	void setData();
 	void getData();
+
+	//void sortdisplay();
 };
 
 

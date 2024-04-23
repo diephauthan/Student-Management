@@ -4,6 +4,7 @@ void menu(list <Student>& database)
 {
 	int choice = 0;
     bool exit_program = false;
+
 	do {
         do
         {
@@ -37,10 +38,19 @@ void menu(list <Student>& database)
                     cout << "------------------------------------- Add A New Student ---------------------------------------------" << endl;
                     addStudent(database);
 
-                    cout << "\n\n\t\t\t 1. Add another student " << endl;
-                    cout << "\t\t\t 0. Back to Menu " << endl;
-                    cout << "\t\t\tEnter the choice: ";
-                    cin >> choice;
+                    bool validInput = false;
+                    while (!validInput) {
+                        cout << "\n\n\t\t\t 1. Add another student " << endl;
+                        cout << "\t\t\t 0. Back to Menu " << endl;
+                        cout << "\t\t\tEnter the choice: ";
+
+                        if (!(cin >>choice)) {
+                            handleInvalidInput();
+                        }
+                        else {
+                            validInput = true;
+                        }
+                    }
 
                     if (choice == 1) {
                         adding_another = true;
@@ -49,7 +59,7 @@ void menu(list <Student>& database)
                         adding_another = false;
                     }
                     else {
-                        cout << "please try again. " << endl;
+                        adding_another = false;
                     }
                 } while (adding_another);
 				
@@ -59,15 +69,23 @@ void menu(list <Student>& database)
 			case 2: // Edit Student Info
 			{
                 bool edit_another = true;
-                while (edit_another) {
+                do
+                {
                     cout << "\n-----------------------------------------------------------------------------------------------------" << endl;
                     cout << "------------------------------------- Edit Student Info ---------------------------------------------" << endl;
                     edit_student_info(database);
                     cout << "1. Go back " << endl;
                     cout << "0. Back to Menu " << endl;
-                    cout << "Enter the choice: ";
-
-                    cin >> choice;
+                    bool validInput = false;
+                    while (!validInput) {
+                        cout << "Enter the choice: ";
+                        if (!(cin >> choice)) {
+                            handleInvalidInput();
+                        }
+                        else {
+                            validInput = true;
+                        }
+                    }
 
                     if (choice == 1) {
                         edit_another = true;
@@ -76,9 +94,10 @@ void menu(list <Student>& database)
                         edit_another = false;
                     }
                     else {
-                        cout << "please try again. " << endl;
+                        cout << "Invalid choice. Please try again.";
+                        edit_another = false;
                     }
-                }
+                } while (edit_another);
 
 				break;
 			}
@@ -93,7 +112,11 @@ void menu(list <Student>& database)
                     cout << "1. Go back " << endl;
                     cout << "0. Back to Menu " << endl;
                     cout << "Enter the choice: ";
-                    cin >> choice;
+                    
+                    while (!(cin >> choice)) {
+                        cout << endl;
+                        handleInvalidInput();
+                    }
 
                     if (choice == 1) {
                         delete_another = true;
@@ -102,7 +125,8 @@ void menu(list <Student>& database)
                         delete_another = false;
                     }
                     else {
-                        cout << "please try again. " << endl;
+                        cout << "Invalid choice. Please try again.";
+                        delete_another = false;
                     }
                 }
 
@@ -120,7 +144,11 @@ void menu(list <Student>& database)
                     cout << "2. Search by ID" << endl;
                     cout << "0. Back to Menu" << endl;
                     cout << "Enter The Choice: ";
-                    cin >> choice;
+                    //cin >> choice;
+                    while (!(cin >> choice)) {
+                        cout << endl;
+                        handleInvalidInput();
+                    }
 
                     switch (choice) {
                         case 1: {
@@ -129,7 +157,10 @@ void menu(list <Student>& database)
                                 cout << "1. Search another student" << endl;
                                 cout << "0. Back to Menu" << endl;
                                 cout << "Enter The Choice: ";
-                                cin >> choice;
+                                while (!(cin >> choice)) {
+                                    cout << endl;
+                                    handleInvalidInput();
+                                }
 
                                 if (choice == 1) {
                                     continueSearch = true;
@@ -145,7 +176,10 @@ void menu(list <Student>& database)
                             cout << "1. Search another student" << endl;
                             cout << "0. Back to Menu" << endl;
                             cout << "Enter The Choice: ";
-                            cin >> choice;
+                            while (!(cin >> choice)) {
+                                cout << endl;
+                                handleInvalidInput();
+                            }
 
                             if (choice == 1) {
                                 continueSearch = true;
@@ -170,6 +204,145 @@ void menu(list <Student>& database)
                 break;
             }
 
+            case 5: // Sort student
+            {
+                bool continuesort = false;
+                do
+                {
+                    cout << "\n-------------------------------------------------------------------------------------------------------" << endl;
+                    cout << "------------------------------------- Sort Student ---------------------------------------------" << endl;
+                    cout << "1. Sort by name" << endl;
+                    cout << "2. Sort by math score" << endl;
+                    cout << "3. Sort by physic score" << endl;
+                    cout << "4. Sort by chemical score" << endl;
+                    cout << "5. Sort by avarage score" << endl;
+                    cout << "0. Back to Menu" << endl;
+                    cout << "Enter The Choice: ";
+                    while (!(cin >> choice)) {
+                        cout << endl;
+                        handleInvalidInput();
+                    }
+
+                    switch (choice)
+                    {
+                        case 1: {
+                            sortbyname(database);
+                            display_sort_list(database);
+                            cout << endl;
+                            cout << "1. Sort another type" << endl;
+                            cout << "0. Back to Menu" << endl;
+                            cout << "Enter The Choice: ";
+                            while (!(cin >> choice)) {
+                                cout << endl;
+                                handleInvalidInput();
+                            }
+
+                            if (choice == 1) {
+                                continuesort = true;
+                            }
+                            else {
+                                continuesort = false;
+                            }
+                            
+                            break;
+                        }
+                        case 2: {
+                            sortbymath(database);
+                            display_sort_list(database);
+                            cout << endl;
+                            cout << "1. Sort another type" << endl;
+                            cout << "0. Back to Menu" << endl;
+                            cout << "Enter The Choice: ";
+                            while (!(cin >> choice)) {
+                                cout << endl;
+                                handleInvalidInput();
+                            }
+
+                            if (choice == 1) {
+                                continuesort = true;
+                            }
+                            else {
+                                continuesort = false;
+                            }
+
+                            break;
+                        }
+                        case 3: {
+                            sortbyphysic(database);
+                            display_sort_list(database);
+                            cout << endl;
+                            cout << "1. Sort another type" << endl;
+                            cout << "0. Back to Menu" << endl;
+                            cout << "Enter The Choice: ";
+                            while (!(cin >> choice)) {
+                                cout << endl;
+                                handleInvalidInput();
+                            }
+
+                            if (choice == 1) {
+                                continuesort = true;
+                            }
+                            else {
+                                continuesort = false;
+                            }
+
+                            break;
+                        }
+                        case 4: {
+                            sortbychemical(database);
+                            display_sort_list(database);
+                            cout << endl;
+                            cout << "1. Sort another type" << endl;
+                            cout << "0. Back to Menu" << endl;
+                            cout << "Enter The Choice: ";
+                            while (!(cin >> choice)) {
+                                cout << endl;
+                                handleInvalidInput();
+                            }
+
+                            if (choice == 1) {
+                                continuesort = true;
+                            }
+                            else {
+                                continuesort = false;
+                            }
+
+                            break;
+                        }
+                        case 5: {
+                            sortbyaverage(database);
+                            display_sort_list(database);
+                            cout << endl;
+                            cout << "1. Sort another type" << endl;
+                            cout << "0. Back to Menu" << endl;
+                            cout << "Enter The Choice: ";
+                            while (!(cin >> choice)) {
+                                cout << endl;
+                                handleInvalidInput();
+                            }
+
+                            if (choice == 1) {
+                                continuesort = true;
+                            }
+                            else {
+                                continuesort = false;
+                            }
+
+                            break;
+                        }
+                        case 0: {
+                            break;
+                            continuesort = false;
+                        }
+                        default:
+                            cout << "Invalid choice. Please try again." << endl;
+                            continuesort = true;
+                        break;
+                    }
+                } while (continuesort);
+                break;
+            }
+
 
             case 6: // Display student list
             {
@@ -177,13 +350,41 @@ void menu(list <Student>& database)
                 cout << "------------------------------------- Student List ---------------------------------------------" << endl;
                 display_student(database);
                 cout << endl;
-                cout << "Press [0] to Back to Menu " << endl;
-                cin >> choice;
-
+                cout << "Press any number to Back to Menu " << endl;
+                while (!(cin >> choice)) {
+                    cout << endl;
+                    handleInvalidInput();
+                }
                 break;
             }
-
+            
+            case 7:
+            {
+                bool check = false;
+                do
+                {
+                    cout << "\n-------------------------------------------------------------------------------------------------------" << endl;
+                    // save_data();
+                    saveCSV(database);
+                    cout << "------------------------------------- Successfully Save Data --------------------------------------------" << endl;
+                    cout << endl;
+                    cout << "Press any number to Back to Menu " << endl;
+                    while (!(cin >> choice)) {
+                        cout << endl;
+                        handleInvalidInput();
+                    }
+                } while (check);
+                
+                    break;
+            }
+            case 0:
+            {
+                exit_program = true;
+                break;
+            }
 			default:
+                cout << "Invalid choice. Please try again.";
+                exit_program = false;
 				break;
 		}
 	
@@ -214,6 +415,7 @@ void edit_student_info(list<Student>& database) {
     int ID_input;
     cout << "Enter the ID of the student you want to modify: ";
     cin >> ID_input;
+    list<Student>::iterator it;
 
     bool found = false;
     for (list<Student>::iterator it = database.begin(); it != database.end(); ++it) {
@@ -221,6 +423,7 @@ void edit_student_info(list<Student>& database) {
             found = true;
             cout << "\nStudent found. Current information:" << endl;
             it->getData();
+
 
             cout << "\nWhat detail do you want to edit?" << endl;
             cout << "1. Name" << endl;
@@ -252,7 +455,7 @@ void edit_student_info(list<Student>& database) {
                     cout << "Invalid choice! Please try again: ";
                     cin >> new_age;
                 }
-           
+
                 it->setAge(new_age);
                 cout << "Student age updated successfully!" << endl;
                 cout << endl;
@@ -319,13 +522,13 @@ void edit_student_info(list<Student>& database) {
             }
             default:
                 cout << "Invalid choice! Please enter a number from 1 to 6:" << endl;
+                break;
             }
-            break;
         }
-    }
-
-    if (!found) {
-        cout << "No student with ID " << ID_input << " found in the database." << endl;
+ 
+      if (!found) {
+            cout << "No student with ID " << ID_input << " found in the database." << endl;
+        }
     }
 }
 
@@ -397,12 +600,156 @@ void search_by_name(list <Student> database)
 }
 
 /*
-* Function: Arrange Students by Name
-* Description: This function is used for arrange students by name
+* Function: compare by name
+* Description: This function is used for compare 2 students by name
 * Input:	database
 * Output:	none
 */
+bool compareByName(const Student& a, const Student& b) {
+    return a.getName() < b.getName();
+}
 
+/*
+* Function: sort by name
+* Description: This function is used for sort students name by using compare by name function
+* Input:	database
+* Output:	none
+*/
+void sortbyname(list<Student>&database) {
+    database.sort(compareByName);
+}
+
+/*
+* Function: compare by math
+* Description: This function is used for compare 2 students by math
+* Input:	database
+* Output:	none
+*/
+bool comparebymath(const Student& a, const Student& b) {
+    return a.getMath() > b.getMath();
+}
+
+/*
+* Function: sort by math
+* Description: This function is used for sort students math by using compare by math function
+* Input:	database
+* Output:	none
+*/
+void sortbymath(list<Student>& database) {
+    database.sort(comparebymath);
+}
+
+/*
+* Function: compare by physic
+* Description: This function is used for compare 2 students by physic
+* Input:	database
+* Output:	none
+*/
+bool comparebyphysic(const Student& a, const Student& b) {
+    return a.getPhysic() > b.getPhysic();
+}
+
+/*
+* Function: sort by physic
+* Description: This function is used for sort students physic by using compare by physic function
+* Input:	database
+* Output:	none
+*/
+void sortbyphysic(list<Student>& database) {
+    database.sort(comparebyphysic);
+}
+
+/*
+* Function: compare by chemical
+* Description: This function is used for compare 2 students by chemical
+* Input:	database
+* Output:	none
+*/
+bool comparebychemical(const Student& a, const Student& b)
+{
+    return a.getChemical() > b.getChemical();
+}
+
+/*
+* Function: sort by chemical
+* Description: This function is used for sort students chemical by using compare by chemical function
+* Input:	database
+* Output:	none
+*/
+void sortbychemical(list<Student>& database) {
+    database.sort(comparebychemical);
+}
+
+/*
+* Function: compare by average
+* Description: This function is used for compare 2 students by average
+* Input:	database
+* Output:	none
+*/
+bool comparebyaverage(const Student& a, const Student& b) {
+    return a.getAverage() > b.getAverage();
+}
+
+/*
+* Function: sort by average
+* Description: This function is used for sort students average by using compare by average function
+* Input:	database
+* Output:	none
+*/
+void sortbyaverage(list<Student>& database) {
+    database.sort(comparebyaverage);
+}
+
+/*
+* Function: Display sort list
+* Description: This function is used for Display the list is sorted
+* Input:	database
+* Output:	none
+*/
+void display_sort_list(list<Student> database)
+{
+    if (database.empty()) {
+        cout << "The student database is empty." << endl;
+        return;
+    }
+
+    cout << "Ordinals| ID\t\t| Name\t\t| Sex\t\t| Average Score\t| Rank\t\t" << endl;
+
+    int stt = 1;
+    for (list<Student>::iterator it = database.begin(); it != database.end(); ++it) {
+        cout << setw(3) << left << stt++ << "\t|  ";
+        cout << setw(5) << left << it->getID() << "\t|  ";
+        cout << setw(5) << left << it->getName() << "\t|  ";
+        
+        string gender; 
+        int gendervalue = it->getGender();
+        if (gendervalue == 0) {
+            gender = "Male"; 
+        }
+        else {
+            gender = "Female";
+        }
+        cout << setw(5) << left << gender << "\t|  "; 
+        cout << setw(10) << left << it->getAverage() << "\t|  ";
+
+        string rank; 
+        int rankValue = it->getRank(); 
+        if (rankValue == 0) {
+            rank = "Excellent";
+        }
+        else if (rankValue == 1) {
+            rank = "Good"; 
+        }
+        else if (rankValue == 2) {
+            rank = "Average";
+        }
+        else {
+            rank = "Poor";
+        }
+        cout << setw(7) << left << rank << "\n"; 
+
+    }
+}
 
 /*
 * Function: Display list of students
@@ -416,8 +763,75 @@ void display_student(list<Student> database)
         cout << "The student database is empty." << endl;
         return;
     }
-    for (auto x : database) {
-        cout << "\n-------------------------------------------------------------------------------------------------------" << endl;
-        x.getData();
+
+    cout << "Ordinals| ID\t\t| Name\t\t| Sex\t\t| Math\t| Physic| Chemical\t| Average Score | Rank" << endl;
+
+    int stt = 1;
+    for (list<Student>::iterator it = database.begin(); it != database.end(); ++it) {
+        cout << setw(3) << left << stt++ << "\t|  ";
+        cout << setw(5) << left << it->getID() << "\t|  ";
+        cout << setw(5) << left << it->getName() << "\t|  ";
+
+        string gender;
+        int gendervalue = it->getGender();
+        if (gendervalue == 0) {
+            gender = "Male";
+        }
+        else {
+            gender = "Female";
+        }
+        cout << setw(5) << left << gender << "\t|  ";
+        cout << setw(3) << left << it->getMath() << "\t|  ";
+        cout << setw(3) << left << it->getPhysic() << "\t|  ";
+        cout << setw(5) << left << it->getChemical() << "\t|  ";
+        cout << setw(5) << left << it->getAverage() << "\t|  ";
+
+        string rank;
+        int rankValue = it->getRank();
+        if (rankValue == 0) {
+            rank = "Excellent";
+        }
+        else if (rankValue == 1) {
+            rank = "Good";
+        }
+        else if (rankValue == 2) {
+            rank = "Average";
+        }
+        else {
+            rank = "Poor";
+        }
+        cout << setw(7) << left << rank << "\n";
+
     }
+}
+
+/*
+* Function: Handle Invalid Input
+* Description: This function is used for Handle Invalid Input in menu function
+* Input:	database
+* Output:	none
+*/
+void handleInvalidInput() {
+    cout << "Invalid input. Please enter an integer." << endl;
+    cin.clear();
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+}
+
+/*
+* Function: savecsv
+* Description: This function is used for saving into database_sv.csv
+* Input:   database (student list)
+* Output:  return: None
+*/
+void saveCSV(list<Student>& database) {
+    ofstream file;
+    file.open("database_sv.csv");
+
+    file << "ID,Name,Gender,Math,Physic,Chemical,Average" << endl;
+
+    for (auto& it : database) {
+        file << it.getID() << ',' << it.getName() << ',' << it.getGender() << ',' << it.getMath() << "," << it.getPhysic() << ',' << it.getChemical() << ',' << it.getAverage() << endl;
+    }
+
+    file.close();
 }

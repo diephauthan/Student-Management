@@ -17,7 +17,7 @@ void Student::setName(string _name) {
 * Input:   None
 * Output:  return: name (name of student)
 */
-string Student::getName() {
+string Student::getName() const {
 	return name;
 }
 
@@ -83,7 +83,7 @@ void Student::setMath(double _math_score)
 * Input:   None
 * Output:  return: math_score (Math score of student)
 */
-double Student::getMath()
+double Student::getMath() const
 {
 	return math_score;
 }
@@ -107,7 +107,7 @@ void Student::setPhysic(double _physic_score)
 * Input:   None
 * Output:  return: physic_score (Physic score of student)
 */
-double Student::getPhysic() {
+double Student::getPhysic() const {
 	return physic_score;
 }
 
@@ -129,7 +129,7 @@ void Student::setChemical(double _chemical_score) {
 * Input:   None
 * Output:  return: chemical_score (Chemical score of student)
 */
-double Student::getChemical() {
+double Student::getChemical() const {
 	return chemical_score;
 }
 
@@ -151,7 +151,7 @@ int Student::getID(){
 * Input: None
 * Output: (math marks + physic marks + chemical marks)/3
 */
-double Student::getAverage()
+double Student::getAverage() const
 {
 	return(math_score + chemical_score + physic_score) / 3;
 }
@@ -176,6 +176,7 @@ Rank Student::getRank() {
 	else
 		return Poor;
 }
+
 
 /*
 * Class: Student
@@ -336,4 +337,3 @@ void Student::getData()
 		break;
 	}
 }
-

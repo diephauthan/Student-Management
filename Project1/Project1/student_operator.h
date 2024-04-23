@@ -11,7 +11,9 @@
 
 #include<iostream>
 #include<list>
+#include<fstream>
 #include"student.h"
+
 
 void menu(list <Student>& database);
 
@@ -26,5 +28,26 @@ void search_by_ID(list <Student> &database);
 void search_by_name(list <Student> database);
 
 void display_student(list<Student> database);
+
+bool compareByName(const Student& a, const Student& b);
+void sortbyname(list<Student>& database);
+
+bool comparebymath(const Student& a, const Student& b);
+void sortbymath(list<Student>& database);
+
+bool comparebyphysic(const Student& a, const Student& b);
+void sortbyphysic(list<Student>& database);
+
+bool comparebychemical(const Student& a, const Student& b);
+void sortbychemical(list<Student>& database);
+
+bool comparebyaverage(const Student& a, const Student& b);
+void sortbyaverage(list<Student>& database);
+
+void display_sort_list(list<Student> database);
+
+void handleInvalidInput();
+void saveCSV(list <Student>& database);
+
 
 #endif
